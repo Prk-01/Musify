@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body{
+
+  background-color:black ;
+}
+
+.brand{
+  background: #FF481C;
+  background: linear-gradient(to right, #FF481C 0%, #DEF30E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
