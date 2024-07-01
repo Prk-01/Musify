@@ -52,9 +52,8 @@ async def root():
 #Get ALL raw data
 @app.get("/data")
 async def get_raw():
-    #Handle if data is not found
-    if data is None:
-        data="No Data Found / Database not found"
+    #Handle if data is not found //data=None
+
     return JSONResponse(
         status_code=200,
         content={"data": data}

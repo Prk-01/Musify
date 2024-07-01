@@ -3,12 +3,28 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import { CgPlayTrackNextO } from "react-icons/cg";
+import { useEffect, useState } from "react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 
 const Tracks = () => {
+  const [data,setData]=useState([])
+
+  const fetchData= async ()=>{
+    const response=await fetch('http://localhost:8000/data')
+    const res=await response.json();
+    setData(res)
+    console.log(res)
+  }
+
+  useEffect(()=>{
+    fetchData()
+  },[])
+
+  console.log(data)
+
     //dummy data for now
     const dummyData = ['Artist1','Artist2','Artist3','Artist4','Artist5']
   return (

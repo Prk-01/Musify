@@ -42,6 +42,8 @@ def load_trie(data):
         for album in artist.get("albums", []):
             insert(album.get("title", "No Title").lower(), name)
             description = album.get("description", "No Description").strip().lower()
+            #descriptions are tokenized into sentences, well its long so shotening it a bit
+            #Can be improved by using a better tokenizer or a better approach
             des = tokenize.sent_tokenize(description)
             for d in des:
                 insert(d, name)
