@@ -1,5 +1,8 @@
 // The Home screen or the landing page of the application will be displayed using this component.
 // The Home component will contain a search bar and an image.
+
+import Search from "./Search/Search"
+
 // The search bar will be used to search for tracks.
 const Home = () => {
   return (
@@ -10,7 +13,7 @@ const Home = () => {
                 <div className="p-0 md:pl-12 h-auto md:h-[50vh] text-center md:text-justify">
                     <h1 className="md:text-3xl sm:text-2xl text-xl mb-6">Life is a journey,<br /> choose the right track for your trek.</h1>
                     {/* Input Component needs to be added here */}
-                    <input type="text" className="text-black" />  
+                    <Search />
                 </div>  
                 <div className="col-span-1 w-full">
                     {/* display results here */}
