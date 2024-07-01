@@ -7,6 +7,9 @@ from fastapi.responses import JSONResponse,RedirectResponse
 import json
 import uvicorn
 
+#Autocomplete functions
+from autocomplete.trie_setup import load_trie,autocomplete
+
 
 # Initialize the FastAPI app
 app = FastAPI()
@@ -27,10 +30,13 @@ app.add_middleware(
 
 #Default Data Value
 data=None
+#Default Trie Value
+trie=None
 
 try:
     with open('data/data.json', 'r') as file:
         data = json.load(file)
+        trie=load_trie(data)
 except FileNotFoundError:
     # I know its a bad practice to use print but i am just trying to see if the file is not found
     # and we will have this file as is uploaded manully for now
@@ -46,9 +52,26 @@ async def root():
 #Get ALL raw data
 @app.get("/data")
 async def get_raw():
+    #Handle if data is not found
+    if data is None:
+        data="No Data Found / Database not found"
     return JSONResponse(
         status_code=200,
         content={"data": data}
+    )
+
+@app.get("/autocomplete/{prefix}")
+async def get_autocomplete(prefix:str):
+    #Handle if trie is not found
+    if trie is None:
+        return JSONResponse(
+            status_code=500,
+            content={"message": "Database not found"}
+        )
+    results = autocomplete(trie, prefix)
+    return JSONResponse(
+        status_code=200,
+        content={"results": results}
     )
 
 
