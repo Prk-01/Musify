@@ -68,9 +68,10 @@ async def get_autocomplete(prefix:str):
             content={"message": "Database not found"}
         )
     results = autocomplete(trie, prefix)
+    sorted_results = sorted(results, key=lambda x: len(x[0]))
     return JSONResponse(
         status_code=200,
-        content={"results": results}
+        content={"results": sorted_results}
     )
 
 

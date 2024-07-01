@@ -1,6 +1,6 @@
 //Search component will be used to search for tracks.
 //It will contain a search bar.
-import { useEffect, useState } from "react";
+import {useState } from "react";
 
 
 const Search = () => {
@@ -10,9 +10,13 @@ const Search = () => {
 
   //Function to fetch data from server
   const fetchData= async (value)=>{
-    const response=await fetch('http://localhost:8000/autocomplete/'+value)
-    const res=await response.json();
-    console.log(res)
+    if (value.length > 0)
+      {
+      const response=await fetch('http://localhost:8000/autocomplete/'+value)
+      const res=await response.json();
+      console.log(res)
+    }
+    
   }
 
   const handleChange=(value)=>{

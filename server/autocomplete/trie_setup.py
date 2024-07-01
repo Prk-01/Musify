@@ -73,8 +73,8 @@ def autocomplete(trie, prefix):
         for artist in trie[key]:
             results.append((key, artist))
     #if no results found, try partial autocomplete for now
-    if len(results) == 0:
-        results = autocomplete_partial(trie, prefix)
+    # if len(results) == 0:
+    #     results = autocomplete_partial(trie, prefix)
     return results
 
 
