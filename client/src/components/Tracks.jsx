@@ -4,29 +4,34 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import { CgPlayTrackNextO } from "react-icons/cg";
 import { useEffect, useState } from "react";
+import { images } from "../assets/constants";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 
 const Tracks = () => {
+
+  //State to store fetched data
   const [data,setData]=useState([])
 
+  //Function to fetch data from server
   const fetchData= async ()=>{
     const response=await fetch('http://localhost:8000/data')
     const res=await response.json();
-    setData(res)
-    console.log(res)
+    setData(res.data)
   }
 
+  //UseEffect to fetch data on component mount
   useEffect(()=>{
     fetchData()
   },[])
 
-  console.log(data)
+  //Test for state change
+  // console.log(data.data)
 
-    //dummy data for now
-    const dummyData = ['Artist1','Artist2','Artist3','Artist4','Artist5']
+  //   //dummy data for now
+  //   const dummyData = ['Artist1','Artist2','Artist3','Artist4']
   return (
     <section id='Tracks'>
     <div className="flex flex-col h-screen bg-[#E9E2CE] text-[#E3A47A] justify-center items-center">
@@ -54,16 +59,16 @@ const Tracks = () => {
         modules={[FreeMode, Pagination]}
         className="max-w-[90%] lg:max-w-[80%]"
       >
-        {dummyData.map((artist,item) => (
+        {data.map((artist,item) => (
           <SwiperSlide key={item}>
             <div className="mx-auto flex flex-col gap-6 mb-20 group relative shadow-lg text-white px-6 py-8 h-[250px] w-[215px] lg:h-[320px] lg:w-[280px] xl:h-[350px] xl:w-[300px] overflow-hidden cursor-pointer">
               <div
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(https://media.npr.org/assets/img/2011/02/23/radiohead_black-eca65690dc0f4b1c31bd9a2549dfe193afdd08ba.jpg?s=1100&c=50&f=jpeg)` }}
+                style={{ backgroundImage: `url(${images[item]})` }}
               />
               <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
               <div className="relative flex flex-col gap-3">
-                <h1 className="text-xl lg:text-2xl group-hover:text-[#E3A47A] duration-100">{artist} </h1>
+                <h1 className="text-xl lg:text-2xl group-hover:text-[#E3A47A] duration-100">{artist.name} </h1>
               </div>
               <CgPlayTrackNextO className="absolute bottom-5 left-5 w-[40px] h-[40px] text-white group-hover:text-[#E3A47A] duration-100" />
             </div>
