@@ -1,4 +1,6 @@
 #APi for front end to interact with the server
+
+# Import the required libraries
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse,RedirectResponse
