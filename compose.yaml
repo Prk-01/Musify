@@ -9,6 +9,16 @@ services:
       - 5173:5173
     depends_on:
       - api
+    develop:
+      watch:
+        - path: ./client/package.json
+          action: rebuild
+        - path: ./client/package-lock.json
+          action: rebuild
+        - path: ./client
+          target: /app
+          action: sync
+
 
   api:
     build:
@@ -16,4 +26,13 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    develop:
+      watch:
+        - path: ./server/requirements.txt
+          action: rebuild
+        - path: ./server
+          target: /app
+          action: sync
+
+
 
