@@ -1,35 +1,46 @@
 version: '3.8'
-
+# Defining web api
 services:
   web:
     build:
       context: ./client
       dockerfile: Dockerfile
+    # Port mapping change when required
     ports:
       - 5173:5173
+    # Making web service depend on api service
+    # So that api service is up before web service
     depends_on:
       - api
+    # Watching for changes in client directory
+    #development only
     develop:
       watch:
+      # rebuilding image when dependency changes
         - path: ./client/package.json
           action: rebuild
         - path: ./client/package-lock.json
           action: rebuild
+      # syncing files to container when changes code or files changes
         - path: ./client
           target: /app
           action: sync
 
-
+# Defining api service backend
   api:
     build:
       context: ./server
       dockerfile: Dockerfile
+    # Port mapping change when required
     ports:
       - "8000:8000"
+    # Watching for changes in server directory
     develop:
+    # rebuilding image when dependency changes
       watch:
         - path: ./server/requirements.txt
           action: rebuild
+      # syncing files to container when changes code or files changes
         - path: ./server
           target: /app
           action: sync

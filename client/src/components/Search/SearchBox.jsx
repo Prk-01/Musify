@@ -12,7 +12,7 @@ const SearchBox = ({ completions,valuelength }) => {
     }
 
   return (
-    <div className="text-white w-[80%] mx-auto  md:mx-0 max-h-44 mt-1 overflow-y-auto custom-scrollbar text-start">
+    <div className="text-white w-[80%] mx-auto  md:mx-0 max-h-48 mt-1 overflow-y-auto custom-scrollbar text-start">
         {
         /*Get the results and display */
         
