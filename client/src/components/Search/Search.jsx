@@ -26,18 +26,30 @@ const Search = () => {
     }
     
   }
-
-  const handleChange=(value)=>{
+//Event to fetch suggestions
+  const getSuggestions=(event)=>{
+    let value=event.target.value;
     setInput(value)
     fetchData(value)
   }
+
+  //Sample output when suggestion is selected
+  const handleSubmit=(event)=>{
+    event.preventDefault();
+    window.open('https://www.youtube.com/results?search_query='+input, '_blank');
+    setInput("")
+    setCompletions([])
+  }
+
 
 
   return (
     <div className="w-full">
         <div className="mx-auto">
-        <input value={input} type="text" onChange={(e)=>handleChange(e.target.value)} className="mx-auto w-[80%] search" placeholder="Musify Here" />
-        <SearchBox completions={completions} valuelength={valuelength}/>
+          <form onSubmit={handleSubmit}>
+          <input value={input} type="text" onChange={(event)=>getSuggestions(event)} className="mx-auto w-[80%] search" placeholder="Musify Here" />
+          <SearchBox completions={completions} valuelength={valuelength}/>
+        </form>
         </div>
         
     </div>
