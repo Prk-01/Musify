@@ -37,7 +37,7 @@ const Tracks = () => {
     <section id='Tracks'>
     <div className="flex flex-col h-screen bg-[#E9E2CE] text-[#E3A47A] justify-center items-center">
         <div className="max-w-[1440px] w-full mx-auto ">
-        <h1 className="text-3xl font-bold pb-8 pl-4">Search Tracks by Artist</h1>
+        <h1 className="text-4xl font-bold pb-20 pl-4">Search Tracks by Artist</h1>
       <Swiper
         breakpoints={{
           280: {

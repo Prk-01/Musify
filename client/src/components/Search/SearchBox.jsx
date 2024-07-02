@@ -5,8 +5,9 @@ const SearchBox = ({ completions,valuelength }) => {
 
     //Sample output when suggestion is seleted
     //Function to handle the click on the search completions redirecting to youtube
-    const handleChange=(e)=>{
-        window.open('https://www.youtube.com/results?search_query='+e, '_blank');
+    const handleChange=(id)=>{
+        let selectedOption=completions[id][0];
+        window.open('https://www.youtube.com/results?search_query='+selectedOption, '_blank');
         // console.log(e)
     }
 
