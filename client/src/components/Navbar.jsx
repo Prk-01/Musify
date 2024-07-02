@@ -19,9 +19,9 @@ const Navbar = () => {
         <div className="text-white flex justify-between items-center h-24 mx-auto px-4 max-w-[1440px]">
             <h1 className="w-full text-3xl"><span className="brand font-bold">Musify</span></h1>
             <ul className="hidden md:flex">
-                <li className="p-4"><a href="#Home">Home</a></li>
-                <li className="p-4"><a href="#Tracks">Tracks</a></li>
-                <li className="p-4"><a href="#About">About</a></li>
+                <li className="p-4 hover:border border-white"><a href="#Home">Home</a></li>
+                <li className="p-4 hover:border border-white"><a href="#Tracks">Tracks</a></li>
+                {/* <li className="p-4"><a href="#About">About</a></li> */}
             </ul>
             {/* Toogle button */}
             <div onClick={handleNav} className="block md:hidden">
@@ -30,9 +30,9 @@ const Navbar = () => {
             {/* Nav for mobile screens */}
             <div className={!nav?'fixed md-hidden left-0 top-0 w-[60%] h-full bg-black' : 'fixed hidden'}>
             <ul className="pt-24">
-                <li className="p-4" onClick={handleNav}><a href="#Home">Home</a></li>
-                <li className="p-4" onClick={handleNav}><a href="#Tracks">Tracks</a></li>
-                <li className="p-4"  onClick={handleNav}><a href="#About">About</a></li>
+                <li className="p-4 hover:border border-whit" onClick={handleNav}><a href="#Home">Home</a></li>
+                <li className="p-4 hover:border border-whit" onClick={handleNav}><a href="#Tracks">Tracks</a></li>
+                {/* <li className="p-4"  onClick={handleNav}><a href="#About">About</a></li> */}
             </ul>
             </div>
         </div>

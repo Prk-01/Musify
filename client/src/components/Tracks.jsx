@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import { CgPlayTrackNextO } from "react-icons/cg";
+import { IoArrowUpCircle } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { images } from "../assets/constants";
 
@@ -76,6 +77,9 @@ const Tracks = () => {
         ))}
       </Swiper>
       </div>
+      <div className="mt-10">
+        <a href="#Home"><IoArrowUpCircle size={32} className="w-12 h-12 hover:text-black animate-bounce" /></a>
+    </div>
     </div>
     </section>
   );

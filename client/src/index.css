@@ -4,8 +4,12 @@
 
 
 body{
-
   background-color:black ;
+}
+
+/* Smooth scroll effect */
+html {
+  scroll-behavior: smooth;
 }
 
 /* logo styling */
