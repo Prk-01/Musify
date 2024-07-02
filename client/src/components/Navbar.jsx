@@ -11,6 +11,14 @@ const Navbar = () => {
 
     //Function to handle the nav nothing fancy
     const handleNav=()=>{
+        if(!nav)
+            {
+                document.body.style.overflow = "auto";
+            }
+        else{
+            document.body.style.overflow = "hidden";
+        }
+        
         setNav(!nav)
     }
   return (
