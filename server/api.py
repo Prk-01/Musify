@@ -4,11 +4,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse,RedirectResponse
-import json
 import uvicorn
 
 #Autocomplete functions
-from autocomplete.trie_setup import load_trie,autocomplete
+from autocomplete.trie_structure import Trie
+from autocomplete.trie_functions import get_data,build_trie
+from nltk import tokenize
+# import nltk
+# nltk.download('punkt')
 
 
 # Initialize the FastAPI app
@@ -29,18 +32,10 @@ app.add_middleware(
 # Typically we would use a database
 
 #Default Data Value
-data=None
+data=get_data('data/data.json')
 #Default Trie Value
-trie=None
+trie=build_trie(data,Trie)
 
-try:
-    with open('data/data.json', 'r') as file:
-        data = json.load(file)
-        trie=load_trie(data)
-except FileNotFoundError:
-    # I know its a bad practice to use print but i am just trying to see if the file is not found
-    # and we will have this file as is uploaded manully for now
-    print("Database not found")
 
 #Lets get those routes
 #Default route redirect to docs
@@ -67,8 +62,9 @@ async def get_autocomplete(prefix:str):
             status_code=500,
             content={"message": "Database not found"}
         )
-    results = autocomplete(trie, prefix)
-    sorted_results = sorted(results, key=lambda x: len(x[0]))
+    prefix=prefix.lower()
+    results = trie.autocomplete(prefix)
+    sorted_results = sorted(results, key=lambda x: len(x))
     return JSONResponse(
         status_code=200,
         content={"results": sorted_results}
@@ -85,5 +81,5 @@ async def custom_404_handler(*kwargs):
 
 
 #Lets get this api running
-# if __name__ == "__main__":
-#     uvicorn.run('api:app',host="127.0.0.1", port=8000, reload=True)
+if __name__ == "__main__":
+    uvicorn.run('api:app',host="127.0.0.1", port=8000, reload=True)
