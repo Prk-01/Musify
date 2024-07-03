@@ -1,5 +1,5 @@
 # Welcome to Musify (Test Project)
-### This a music platform where you can listen to your favourite albums and tracks.
+### This a music platform where you can listen to albums and tracks of your choice.
 
 # How to run the application
 ## With docker
@@ -14,7 +14,7 @@ docker compose up
 ```
 
 
-## With out docker
+## Without docker
 * Clone the repository
 * Open the File
 ```bat
