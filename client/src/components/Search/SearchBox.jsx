@@ -1,7 +1,7 @@
 //SearchBox component to display the search completions
 
 
-const SearchBox = ({ completions,valuelength }) => {
+const SearchBox = ({ completions,valuelength,clearInput }) => {
 
     //Function to disable the parent scroll when the search completions are displayed
     // const disableParentScroll=()=>{
@@ -16,6 +16,8 @@ const SearchBox = ({ completions,valuelength }) => {
     //Sample output when suggestion is seleted
     //Function to handle the click on the search completions redirecting to youtube
     const handleQuery=(id)=>{
+        //reset the input and completions
+        clearInput(true)
         let selectedOption=completions[id];
         window.open('https://www.youtube.com/results?search_query='+selectedOption, '_blank');
         // console.log(e)

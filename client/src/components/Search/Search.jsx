@@ -76,6 +76,12 @@ const Search = () => {
     setCompletions([])
   }
 
+  //Function to clear the input if suggestion is selected
+  const clearInput=(value)=>{
+    setInput("")
+    setCompletions([])
+  }
+
 
 
   return (
@@ -87,7 +93,7 @@ const Search = () => {
           {/* error message for invalid input submission */}
           {notvalid && <p className="text-red-500 text-sm ps-2 pt-2">Apologies, We dont have that on Musify yet!</p>}
           {/* search results */}
-          <SearchBox completions={completions} valuelength={valuelength}/>
+          <SearchBox completions={completions} valuelength={valuelength} clearInput={clearInput}/>
         </form>
         </div>
         
