@@ -46,9 +46,6 @@ const Search = () => {
   }
 
 
-
-
-
   //Sample output when suggestion is selected
   const handleSubmit=(event)=>{
     event.preventDefault();
