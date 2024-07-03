@@ -70,6 +70,22 @@ async def get_autocomplete(prefix:str):
         content={"results": sorted_results}
     )
 
+@app.get("/check_input/{prefix}")
+async def get_(prefix:str):
+    #Handle if trie is not found
+    if trie is None:
+        return JSONResponse(
+            status_code=500,
+            content={"message": "Database not found"}
+        )
+    prefix=prefix.lower()
+    results = trie.is_valid(prefix)
+    return JSONResponse(
+        status_code=200,
+        content={"results": results}
+    )
+
+
 
 # Custom 404 error handler
 @app.exception_handler(404)

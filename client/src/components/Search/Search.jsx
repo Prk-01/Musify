@@ -12,7 +12,7 @@ const Search = () => {
   const [valuelength,setValuelength]=useState(0);
 
   //Function to fetch data from server
-  const fetchData= async (value)=>{
+  const fetchSuggestions= async (value)=>{
     setValuelength(value.length)
     //If the input is not empty dont fetch data
     if (value.length > 0)
@@ -26,12 +26,16 @@ const Search = () => {
     }
     
   }
+
+
 //Event to fetch suggestions
   const getSuggestions=(event)=>{
     let value=event.target.value;
     setInput(value)
-    fetchData(value)
+    fetchSuggestions(value)
   }
+
+
 
   //Sample output when suggestion is selected
   const handleSubmit=(event)=>{
