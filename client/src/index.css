@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* body background */
 body{
   background-color:black ;
 }
@@ -43,7 +43,7 @@ html {
   background-clip: padding-box, border-box;
 }
 
-/*Custom scrollbar */
+/*Custom scrollbar for search box */
 .custom-scrollbar {
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: #DEF30E rgba(255, 165, 0, 0.1);

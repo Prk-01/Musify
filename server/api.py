@@ -9,7 +9,7 @@ import uvicorn
 #Autocomplete functions
 from autocomplete.trie_structure import Trie
 from autocomplete.trie_functions import get_data,build_trie
-from nltk import tokenize
+
 # import nltk
 # nltk.download('punkt')
 

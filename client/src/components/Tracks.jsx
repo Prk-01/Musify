@@ -38,8 +38,10 @@ const Tracks = () => {
     <div className="flex flex-col h-screen bg-[#E9E2CE] text-[#E3A47A] justify-center items-center">
         <div className="max-w-[1440px] w-full mx-auto ">
         <h1 className="text-4xl font-bold pb-20 pl-4">Search Tracks by Artist</h1>
+        {/* card carousel to find tracks by artists for now can be extended to genres and other filters. */}
       <Swiper
         breakpoints={{
+          //settting breakpoints for the carousel
           280: {
             slidesPerView: 1,
             spaceBetween: 20,
@@ -60,6 +62,7 @@ const Tracks = () => {
         modules={[FreeMode, Pagination]}
         className="max-w-[90%] lg:max-w-[80%]"
       >
+        {/* Mapping the data to the carousel form api response */}
         {data.map((artist,item) => (
           <SwiperSlide key={item}>
             <div className="mx-auto flex flex-col gap-6 mb-20 group relative shadow-lg text-white px-6 py-8 h-[250px] w-[215px] lg:h-[320px] lg:w-[280px] xl:h-[350px] xl:w-[300px] overflow-hidden cursor-pointer">
@@ -77,6 +80,7 @@ const Tracks = () => {
         ))}
       </Swiper>
       </div>
+      {/* Go back to top */}
       <div className="mt-10">
         <a href="#Home"><IoArrowUpCircle size={32} className="w-12 h-12 hover:text-black animate-bounce" /></a>
     </div>

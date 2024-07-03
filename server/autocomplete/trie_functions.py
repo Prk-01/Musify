@@ -5,7 +5,7 @@ from nltk import tokenize
 
 nltk.download('punkt')
 
-
+# This function reads the data from the json file
 def get_data(path):
     try:
         with open(path, 'r') as file:
@@ -16,7 +16,7 @@ def get_data(path):
         # and we will have this file as is uploaded manully for now
         print("Database not found")
 
-
+# This function builds the trie from the data
 def build_trie(data,Trie):
     trie = Trie()
     for artist in data:
