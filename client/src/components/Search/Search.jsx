@@ -17,21 +17,33 @@ const Search = () => {
 
   //Function to fetch data from server
   const fetchSuggestions= async (value)=>{
+
+    //state to store the length of the input
     setValuelength(value.length)
+
     //If the input is not empty dont fetch data
     if (value.length > 0)
       {
       //fetch data from server
       const response=await fetch('http://localhost:8000/autocomplete/'+value)
-      const res=await response.json();
-      setCompletions(res.results)
+    //Exception handling doesn't require much here
+    //As if no data the states will be set to empty
+      if(response.ok)
+        {
+        const res=await response.json();
+        setCompletions(res.results)
+        }
+        else{
+          //if no response then set completions to empty
+          //dont fetch and no suggestions
+          setCompletions([])
+        }
     }
     else{
       //if no input then set completions to empty
       //dont fetch and no suggestions
       setCompletions([])
     }
-    
   }
 
 //Event to fetch suggestions

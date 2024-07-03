@@ -18,9 +18,17 @@ const Tracks = () => {
 
   //Function to fetch data from server
   const fetchData= async ()=>{
-    const response=await fetch('http://localhost:8000/data')
-    const res=await response.json();
-    setData(res.data)
+      const response=await fetch('http://localhost:8000/data')
+      if(response.ok){
+        const res=await response.json();
+        setData(res.data)
+      }
+      else{
+        //if no response then set data to empty
+        setData([])
+
+      }
+      
   }
 
   //UseEffect to fetch data on component mount
