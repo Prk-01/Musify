@@ -36,6 +36,9 @@ npm run dev
 
 
 
+### By default client runs on localhost:5173 and server runs on localhost:8000.
+
+
 
 
 
